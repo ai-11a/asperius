@@ -28,50 +28,60 @@ Satmak istediğiniz eşyanın id sini giriniz. Örnek \n a?maden-sat elmas/zümr
 )
   
 if(args[0] === "elmas") {
+      let elmas = db.get(`elmas_${kllanç.id}`)
  let sayı = args[1] 
     let fiyatcık = 250*sayı // istediğiniz fiyat
     
 if(!elmas) return message.reply(`Hiç elmasınız bulunmamakta!`)
+  if(sayı > elmas) return message.channel.send(`Çantandaki elmasdan daha fazla satamazsın!`)
   db.delete(`elmas_${kllanç.id}`, "Kapalıdır")
   db.add(`bakiye_${kllanç.id}`, +fiyatcık)
   
   return message.reply(`Ürünü başarıyla sattınız. Kazandığınız para: ${fiyatcık}`)
 }
   if(args[0] === "zümrüt") {
+        let zümrüt = db.get(`zümrüt_${kllanç.id}`)
      let sayı = args[1] 
     let fiyatcık2 = 400*sayı // istediğiniz fiyat
     
   if(!zümrüt) return message.reply(`Hiç zümrütünüz bulunmamakta!`)  
+    if(sayı > zümrüt) return message.channel.send(`Çantandaki zümrütden daha fazla satamazsın!`)
       db.delete(`zümrüt_${kllanç.id}`, "Kapalıdır")
   db.add(`bakiye_${kllanç.id}`, +fiyatcık2)
     
     return message.reply(`Ürünü başarıyla sattınız. Kazandığınız para: ${fiyatcık2}`)
 }
   if(args[0] === "altın") {
+        let altın = db.get(`altın_${kllanç.id}`)
      let sayı = args[1] 
     let fiyatcık3 = 50*sayı // istediğiniz fiyat
     
     if(!altın) return message.reply(`Hiç altınınız bulunmamakta!`)
+    if(sayı > altın) return message.channel.send(`Çantandaki altından daha fazla satamazsın!`)
       db.delete(`altın_${kllanç.id}`, "Kapalıdır")
   db.add(`bakiye_${kllanç.id}`, +fiyatcık3)
     
     return message.reply(`Ürünü başarıyla sattınız. Kazandığınız para: ${fiyatcık3}`)
 }
   if(args[0] === "demir") {
+    let demir = db.get(`demir_${kllanç.id}`)
      let sayı = args[1] 
     let fiyatcık4 = 30*sayı // istediğiniz fiyat
     
     if(!demir) return message.reply(`Hiç demiriniz bulunmamakta!`)
+    if(sayı > demir) return message.channel.send(`Çantandaki demirden daha fazla satamazsın!`)
       db.delete(`demir_${kllanç.id}`, "Kapalıdır")
   db.add(`bakiye_${kllanç.id}`, +fiyatcık4)
     
     return message.reply(`Ürünü başarıyla sattınız. Kazandığınız para: ${fiyatcık4}`)
 }
     if(args[0] === "taş") {
-     let sayı = args[1] 
+let taş = db.get(`taş_${kllanç.id}`)      
+     let sayı = args[1]
     let fiyatcık4 = 3*sayı // istediğiniz fiyat
     
     if(!taş) return message.reply(`Hiç taşınız bulunmamakta!`)
+          if(sayı > taş) return message.channel.send(`Çandandaki taşdan daha fazla satamazsınız!`)
       db.delete(`taş_${kllanç.id}`, "Kapalıdır")
   db.add(`bakiye_${kllanç.id}`, +fiyatcık4)
     

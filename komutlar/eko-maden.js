@@ -3,7 +3,7 @@ const db = require('quick.db')
   const ms = require('parse-ms');
 exports.run = async(client, message, args) => {
 var bakiye = db.fetch(`para_${message.author.id}`)
-var hesapd = db.fetch(`bakiye_${message.author.id}`)
+var hesapd = db.fetch(`hesapdurum_${message.author.id}`)
 var demirkazma = db.get(`demirkazma_${message.author.id}`)
 var elmaskazma = db.get(`elmaskazma_${message.author.id}`)
 var taşkazma = db.get(`taşkazma_${message.author.id}`)
@@ -14,7 +14,7 @@ let sure = await db.fetch(`calissüre_${message.member.id}`)
         let timeObj = ms(cd - (Date.now() - sure)) 
       message.channel.send(`Bir daha maden kazmak için biraz beklemen gerekli **${timeObj.seconds} saniye** sonra tekrar dene!`).then(msg => msg.delete({ timeout: `${cd}`}))
     } else {
-        if(!hesapd) return message.channel.send("İlk önce hesap oluşturmalısın\nHesap oluşturmak için `!hesap-oluştur <isim>`")
+        if(!hesapd) return message.channel.send("İlk önce hesap oluşturmalısın\nHesap oluşturmak için `a?hesap-oluştur <isim>`")
 
    if(!args[0]) return message.reply(`Bir maden belirtiniz. Örnek: a?maden zümrüt/elmas/altın/demir/taş`)
 if(args[0] === "zümrüt") {
@@ -50,7 +50,7 @@ Madendeyken Demir kazıyodun ve ${maden2} adet demir kazandın
 `)
 }
 if(args[0] === "taş") {
-  let maden5 = Math.round(Math.random() * 50)
+  let maden5 = Math.round(Math.random() * 30)
         db.add(`taş_${message.author.id}`, maden5)
      message.channel.send(`
 Madendeyken Taş kazıyodun ve ${maden5} adet taş kazandın

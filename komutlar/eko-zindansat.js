@@ -34,6 +34,7 @@ if(args[0] === "zombi-et") {
     let fiyatcık = 30*sayı // istediğiniz fiyat
     
 if(!zombiet) return message.reply(`Hiç zombi etiniz bulunmamakta!`)
+if(sayı > zombiet) return message.channel.send(`Çantanızdaki **zombi etinden** daha fazla zombi et satamazsınız!`)
   db.delete(`zombiet_${kllanç.id}`, "Kapalıdır")
   db.add(`bakiye_${kllanç.id}`, +fiyatcık)
   
@@ -44,6 +45,7 @@ if(!zombiet) return message.reply(`Hiç zombi etiniz bulunmamakta!`)
     let fiyatcık2 = 65*sayı // istediğiniz fiyat
     
   if(!örümcekgöz) return message.reply(`Hiç örümcek gözünüz bulunmamakta!`)  
+    if(sayı > örümcekgöz) return message.channel.send(`Çantanızdaki **örümcek gözden** daha fazla örümcek göz satamazsınız!`)
       db.delete(`örümcekgöz_${kllanç.id}`, "Kapalıdır")
   db.add(`bakiye_${kllanç.id}`, +fiyatcık2)
     
@@ -54,6 +56,7 @@ if(!zombiet) return message.reply(`Hiç zombi etiniz bulunmamakta!`)
     let fiyatcık2 = 15*sayı // istediğiniz fiyat
     
   if(!ip) return message.reply(`Hiç ipiniz bulunmamakta!`)  
+      if(sayı > ip) return message.channel.send(`Çantanızdaki **ipden** daha fazla ip satamazsınız!`)
       db.delete(`ip_${kllanç.id}`, "Kapalıdır")
   db.add(`bakiye_${kllanç.id}`, +fiyatcık2)
     
@@ -64,6 +67,7 @@ if(!zombiet) return message.reply(`Hiç zombi etiniz bulunmamakta!`)
     let fiyatcık3 = 5*sayı // istediğiniz fiyat
     
     if(!ok) return message.reply(`Hiç okunuz bulunmamakta!`)
+    if(sayı > ok) return message.channel.send(`Çantanızdaki **okdan** daha fazla ok satamazsınız!`)
       db.delete(`ok_${kllanç.id}`, "Kapalıdır")
   db.add(`bakiye_${kllanç.id}`, +fiyatcık3)
     
@@ -74,6 +78,7 @@ if(!zombiet) return message.reply(`Hiç zombi etiniz bulunmamakta!`)
     let fiyatcık4 = 25*sayı // istediğiniz fiyat
     
     if(!yay) return message.reply(`Hiç yayınız bulunmamakta!`)
+    if(sayı > yay) return message.channel.send(`Çantanızdaki **yaydan** daha fazla yay satamazsınız!`)
       db.delete(`yay_${kllanç.id}`, "Kapalıdır")
   db.add(`bakiye_${kllanç.id}`, +fiyatcık4)
     
@@ -84,6 +89,7 @@ if(!zombiet) return message.reply(`Hiç zombi etiniz bulunmamakta!`)
     let fiyatcık4 = 70*sayı // istediğiniz fiyat
     
     if(!enderman) return message.reply(`Hiç enderman gözünüz bulunmamakta!`)
+      if(sayı > enderman) return message.channel.send(`Çantanızdaki **enderman gözünden** daha fazla enderman göz satamazsınız!`)
       db.delete(`endergöz_${kllanç.id}`, "Kapalıdır")
   db.add(`bakiye_${kllanç.id}`, +fiyatcık4)
     

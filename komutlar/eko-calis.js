@@ -5,7 +5,7 @@ exports.run = async(client, message, args) => {
 		  
 	
 var bakiye = db.fetch(`para_${message.author.id}`)
-var hesapd = db.fetch(`bakiye_${message.author.id}`)
+var hesapd = db.fetch(`hesapdurum_${message.author.id}`)
 let cd = 30000 //30 dk şuan kendinize göre ayarlayınız
 let sure = await db.fetch(`calissüre_${message.member.id}`)
      

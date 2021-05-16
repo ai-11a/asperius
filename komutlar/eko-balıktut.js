@@ -5,7 +5,8 @@ exports.run = async (client, message, args) => {
  
     const hesapdurumu = await db.fetch(`hesapdurum_${message.author.id}`);
   const hesapismi = await db.fetch(`hesapismi_${message.author.id}`);
-  
+  const olta = await db.fetch(`olta_${message.author.id}`)
+  if(!olta) return message.channel.send(`Hiç oltanız bulunamamkta lütfen satın alınız! a?market`)
   if(!hesapdurumu) {
     message.channel.send(`İlk olarak hesap oluşturmalısın. ${client.ekoayarlar.botunuzunprefixi}hesap-oluştur <Hesap İsmi>`)
   } else {

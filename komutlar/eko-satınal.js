@@ -13,8 +13,8 @@ exports.run = async (client, message, args) => {
   const soygunlog = db.get(`soygunlog_${kllanç.id}`)
   const bakiye = await db.fetch(`bakiye_${kllanç.id}`);
   const silah = db.get(`silah_${kllanç.id}`)
-  const olta = db.get(`silah_${kllanç.id}`)
-  const telefon = db.get(`silah_${kllanç.id}`)
+  const olta = db.get(`olta_${kllanç.id}`)
+  const telefon = db.get(`telefon${kllanç.id}`)
   const balta = db.get(`balta_${kllanç.id}`)
   const btc = db.get(`btc_${kllanç.id}`)
 

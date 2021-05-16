@@ -8,6 +8,7 @@ let amaç = db.fetch(`şirketamac_${message.author.id}`)
  let altın = db.fetch(`altın_${message.author.id}`)
  let kredi = db.fetch(`kredi_${message.author.id}`)   
  let deger = db.fetch(`bankabakiye_${message.author.id}`)
+ let bakiye = db.fetch(`bakiye_${message.author.id}`)
 let isim = args.slice(1).join(" ");
 
 const embed1 = new Discord.MessageEmbed()
@@ -58,6 +59,7 @@ db.set(`banka_${message.author.id}`, isim)
 }
 if(args[0] === "para-yatır") {
 let para = args.slice(1).join(" ");  
+  if(para > bakiye) return message.channel.send(`Kendi parandan daha fazla para yatıramazsın!`)
 if(!args[0]) return message.channel.send(
 new Discord.MessageEmbed()
 .setAuthor("Asperius Bank", client.user.avatarURL())
@@ -70,7 +72,9 @@ db.add(`bakiye_${message.author.id}`, -para)
 return message.channel.send(`Para yatırımı başarılı! Banka bakiyesi: ${deger}`)
 } 
 if(args[0] === "para-çek") {
+let bbakiye = db.fetch(`bankabakiye_${message.author.id}`)
 let para = args.slice(1).join(" ");  
+if(para > bbakiye) return message.channel.send(`Bankandaki bakiyenden daha fazla para çekemezsin!`)
 if(!args[0]) return message.channel.send(
 new Discord.MessageEmbed()
 .setAuthor("Asperius Bank", client.user.avatarURL())
