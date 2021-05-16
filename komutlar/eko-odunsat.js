@@ -27,41 +27,49 @@ exports.run = async (client, message, args) => {
 )
   
 if(args[0] === "meşe") {
+  let mese = db.get(`meseodunu_${kllanç.id}`)
  let sayı = args[1] 
     let fiyatcık = 120*sayı // istediğiniz fiyat
     
 if(!silah) return message.reply(`Hiç meşe odununz bulunmamakta!`)
-  db.delete(`silah_${kllanç.id}`, "Kapalıdır")
+  if(sayı > mese) return message.channel.send(`Çantandaki **Meşe** den daha fazla meşe satamazsın!`)
+  db.delete(`meseodunu_${kllanç.id}`, "Kapalıdır")
   db.add(`bakiye_${kllanç.id}`, +fiyatcık)
   
   return message.reply(`Ürünü başarıyla sattınız. Kazandığınız para: ${fiyatcık}`)
 }
   if(args[0] === "ladin") {
+      let mese = db.get(`ladinodunu_${kllanç.id}`)
      let sayı = args[1] 
     let fiyatcık2 = 125*sayı // istediğiniz fiyat
     
   if(!balta) return message.reply(`Hiç ladin odununz bulunmamakta!`)  
-      db.delete(`balta_${kllanç.id}`, "Kapalıdır")
+      if(sayı > mese) return message.channel.send(`Çantandaki **Ladin** den daha fazla ladin satamazsın!`)
+      db.delete(`ladinodunu_${kllanç.id}`, "Kapalıdır")
   db.add(`bakiye_${kllanç.id}`, +fiyatcık2)
     
     return message.reply(`Ürünü başarıyla sattınız. Kazandığınız para: ${fiyatcık2}`)
 }
   if(args[0] === "huş") {
+      let mese = db.get(`husodunu_${kllanç.id}`)
      let sayı = args[1] 
     let fiyatcık3 = 120*sayı // istediğiniz fiyat
     
     if(!olta) return message.reply(`Hiç huş odununz bulunmamakta!`)
-      db.delete(`telefon_${kllanç.id}`, "Kapalıdır")
+      if(sayı > mese) return message.channel.send(`Çantandaki **Huş** dan daha fazla huş satamazsın!`)
+      db.delete(`husodunu_${kllanç.id}`, "Kapalıdır")
   db.add(`bakiye_${kllanç.id}`, +fiyatcık3)
     
     return message.reply(`Ürünü başarıyla sattınız. Kazandığınız para: ${fiyatcık3}`)
 }
   if(args[0] === "koyu-meşe") {
+      let mese = db.get(`koyumeseodunu_${kllanç.id}`)
      let sayı = args[1] 
     let fiyatcık4 = 150*sayı // istediğiniz fiyat
     
     if(!telefon) return message.reply(`Hiç koyu meşe odununz bulunmamakta!`)
-      db.delete(`olta_${kllanç.id}`, "Kapalıdır")
+      if(sayı > mese) return message.channel.send(`Çantandaki **Koyu Meşe** den daha fazla Koyu meşe satamazsın!`)
+      db.delete(`koyumeseodunu_${kllanç.id}`, "Kapalıdır")
   db.add(`bakiye_${kllanç.id}`, +fiyatcık4)
     
     return message.reply(`Ürünü başarıyla sattınız. Kazandığınız para: ${fiyatcık4}`)

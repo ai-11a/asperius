@@ -6,7 +6,7 @@ exports.run = async(client, message, args) => {
 	    var sans = ["Sokaktaki teyzenin cüzdanını çalarak", "Evsiz bir adamın cüzdanını çalarak", "Sokakta rastgele birinin montunu çalıp sattın ve", "Eren'in kasasının içine girip", "Muratın cüzdanını çalarak", "Sokaktaki bir kızın telefonunu çalıp sattın ve", "Sokaktaki bir arabayı çalıp sattın ve"];
     var sonuc = sans[Math.floor((Math.random() * sans.length))];
 var bakiye = db.fetch(`para_${message.author.id}`)
-var hesapd = db.fetch(`bakiye_${message.author.id}`)
+var hesapd = db.fetch(`hesapdurum_${message.author.id}`)
 let cd = 30000 //30 saniye şuan kendinize göre ayarlayınız
 let sure = await db.fetch(`calissüre2_${message.member.id}`)
      

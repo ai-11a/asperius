@@ -225,3 +225,15 @@ client.on('guildDelete', guild => {
     }
   });
   
+//Asperius
+client.on("guildMemberAdd", async member => {
+    let dmhg = db.get(`dmhg_${member.guild.id}`)
+if(dmhg) {    
+    const asperius = new Discord.MessageEmbed()
+        .setColor(`RANDOM`)
+        .setAuthor("Asperius")
+        .setDescription(dmhg)
+        .setFooter(`Sunucuya Hoşgeldin.`)
+    member.send(asperius);
+}
+});
