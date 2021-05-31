@@ -19,7 +19,7 @@ Kolay para kazanma komutları;
 
    .addField("🤖 Başlangıç", `
 Bot komutları;
-\`çantam\` \`param\` \`cüzdan\` \`transfer\` \`hesap-oluştur\` \`bilgiler\` \`banka\`
+\`çantam\` \`param\` \`cüzdan\` \`transfer\` \`hesap-oluştur\` \`bilgiler\` \`banka\` \`sıralama\`
 `)
  
   .addField("<:minecraft:830212505937903667> Minecraft komutları", `

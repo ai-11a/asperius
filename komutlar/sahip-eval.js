@@ -8,7 +8,7 @@ exports.run = async (client, message, args, config) => {
   const commonTags = require("common-tags");
   const util = require("util");
    let { MessageEmbed } = require("discord.js");
-if(message.author.id !== "477050335685509124" && message.author.id !== "756517457031593995")  return message.channel.send("<:Yldz2Png:806136574328176671> sahip komutu bu");
+if(message.author.id !== "477050335685509124" && message.author.id !== "449536056019124234")  return message.channel.send("<:Yldz2Png:806136574328176671> sahip komutu bu");
     function cleanText(text) {
       if (typeof text === "string") {
         return text
