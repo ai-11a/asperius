@@ -6,6 +6,17 @@ const ms = require('parse-ms')
 const db = require('quick.db')
 
 exports.run = async (client, message, args) => {
+   let ekoban = db.get(`sistemban_${message.author.id}`)
+ if(ekoban) return message.channel.send(
+ new Discord.MessageEmbed()
+   .setAuthor("Sistem Banı!", message.author.avatarURL())
+   .setDescription(`
+Ekonomi sisteminden \`${ekoban}\` sebebiyle banlanmışsınız!
+Eğer itirazının varsa [Destek Sunucusu](https://discord.gg/Eq67w5gkD7)'na katılarak söyleyebilirsin.
+   `)
+   .setFooter("Asperius", client.user.avatarURL())
+   .setTimestamp()
+ )
     let member = message.author;
   let kllanç = message.mentions.users.first() || message.author;
   
@@ -34,7 +45,7 @@ if(args[0] === "elmas") {
     
 if(!elmas) return message.reply(`Hiç elmasınız bulunmamakta!`)
   if(sayı > elmas) return message.channel.send(`Çantandaki elmasdan daha fazla satamazsın!`)
-  db.delete(`elmas_${kllanç.id}`, "Kapalıdır")
+  db.add(`elmas_${kllanç.id}`, -sayı)
   db.add(`bakiye_${kllanç.id}`, +fiyatcık)
   
   return message.reply(`Ürünü başarıyla sattınız. Kazandığınız para: ${fiyatcık}`)
@@ -46,7 +57,7 @@ if(!elmas) return message.reply(`Hiç elmasınız bulunmamakta!`)
     
   if(!zümrüt) return message.reply(`Hiç zümrütünüz bulunmamakta!`)  
     if(sayı > zümrüt) return message.channel.send(`Çantandaki zümrütden daha fazla satamazsın!`)
-      db.delete(`zümrüt_${kllanç.id}`, "Kapalıdır")
+      db.add(`zümrüt_${kllanç.id}`, -sayı)
   db.add(`bakiye_${kllanç.id}`, +fiyatcık2)
     
     return message.reply(`Ürünü başarıyla sattınız. Kazandığınız para: ${fiyatcık2}`)
@@ -58,7 +69,7 @@ if(!elmas) return message.reply(`Hiç elmasınız bulunmamakta!`)
     
     if(!altın) return message.reply(`Hiç altınınız bulunmamakta!`)
     if(sayı > altın) return message.channel.send(`Çantandaki altından daha fazla satamazsın!`)
-      db.delete(`altın_${kllanç.id}`, "Kapalıdır")
+      db.add(`altın_${kllanç.id}`, -sayı)
   db.add(`bakiye_${kllanç.id}`, +fiyatcık3)
     
     return message.reply(`Ürünü başarıyla sattınız. Kazandığınız para: ${fiyatcık3}`)
@@ -70,7 +81,7 @@ if(!elmas) return message.reply(`Hiç elmasınız bulunmamakta!`)
     
     if(!demir) return message.reply(`Hiç demiriniz bulunmamakta!`)
     if(sayı > demir) return message.channel.send(`Çantandaki demirden daha fazla satamazsın!`)
-      db.delete(`demir_${kllanç.id}`, "Kapalıdır")
+      db.add(`demir_${kllanç.id}`, -sayı)
   db.add(`bakiye_${kllanç.id}`, +fiyatcık4)
     
     return message.reply(`Ürünü başarıyla sattınız. Kazandığınız para: ${fiyatcık4}`)
@@ -82,7 +93,7 @@ let taş = db.get(`taş_${kllanç.id}`)
     
     if(!taş) return message.reply(`Hiç taşınız bulunmamakta!`)
           if(sayı > taş) return message.channel.send(`Çandandaki taşdan daha fazla satamazsınız!`)
-      db.delete(`taş_${kllanç.id}`, "Kapalıdır")
+      db.add(`taş_${kllanç.id}`, -sayı)
   db.add(`bakiye_${kllanç.id}`, +fiyatcık4)
     
     return message.reply(`Ürünü başarıyla sattınız. Kazandığınız para: ${fiyatcık4}`)

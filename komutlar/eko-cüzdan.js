@@ -5,7 +5,17 @@ var ayarlar = require('../ayarlar.json');
 const request = require('node-superfetch');
 
 exports.run = async (client, message, args) => {
-		  
+	 let ekoban = db.get(`sistemban_${message.author.id}`)
+ if(ekoban) return message.channel.send(
+ new Discord.MessageEmbed()
+   .setAuthor("Sistem Banı!", message.author.avatarURL())
+   .setDescription(`
+Ekonomi sisteminden \`${ekoban}\` sebebiyle banlanmışsınız!
+Eğer itirazının varsa [Destek Sunucusu](https://discord.gg/Eq67w5gkD7)'na katılarak söyleyebilirsin.
+   `)
+   .setFooter("Asperius", client.user.avatarURL())
+   .setTimestamp()
+ )	  
 	
   let member = message.author;
   let member2 = message.mentions.members.first()

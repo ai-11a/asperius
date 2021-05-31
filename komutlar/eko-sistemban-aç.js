@@ -9,7 +9,7 @@ exports.run = async (client, message, args) => {
  new Discord.MessageEmbed()
    .setAuthor("Sistem Banı!", message.author.avatarURL())
    .setDescription(`
-Ekonomi sisteminden banlanmışsınız!
+Ekonomi sisteminden \`${ekoban}\` sebebiyle banlanmışsınız!
 Eğer itirazının varsa [Destek Sunucusu](https://discord.gg/Eq67w5gkD7)'na katılarak söyleyebilirsin.
    `)
    .setFooter("Asperius", client.user.avatarURL())
@@ -17,29 +17,21 @@ Eğer itirazının varsa [Destek Sunucusu](https://discord.gg/Eq67w5gkD7)'na kat
  )
 	
 if(message.author.id !== "477050335685509124") if(message.author.id !== "449536056019124234") return message.channel.send("hoop bilader sahip komutu bu");
-  const silinecekkllnc = message.mentions.members.first();
-  let para = args[1]
-  if(!silinecekkllnc) return message.channel.send(`Bir kullanıcı belirtmelisin!`)
-  const bakiye = await db.fetch(`bakiye_${silinecekkllnc.id}`);
-  const hesapdurumu = await db.fetch(`hesapdurum_${silinecekkllnc.id}`);
-  const hesapismi = await db.fetch(`hesapismi_${silinecekkllnc.id}`);
-  
-  if(!hesapdurumu) return message.channel.send(`Kayıtlı olan bir kullanıcı belirtmelisin!`)
-  await db.add(`bakiye_${silinecekkllnc.id}`, para)
-  
-  
-  message.channel.send(`:+1:`)
-
+  const uye = args[0]
+if(!uye) return message.channel.send(`Lütfen bir kullanıcı id si girin.`)
+let members = client.users.cache.get(uye)
+db.delete(`sistemban_${members.id}`)
+message.channel.send(`Kullanıcı başarıyla ekonomi sisteminden banı açıldı!`)
 }
 exports.conf = {
     enabled: true,
     guildOnly: true,
-    aliases: ['ekle'],
+    aliases: ['ekonomi-sistem-banaç', 'eko-sistem-ban-aç'],
     permLevel: 0
 }
 
 exports.help = {
-    name: 'ekle',
+    name: 'ekonomi-sistem-ban-aç',
     description: 'Kullanıcıların kullanıcı adını tarar.',
     usage: 'tag-taraması <tag>'
 }

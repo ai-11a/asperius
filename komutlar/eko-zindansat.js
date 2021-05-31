@@ -6,6 +6,17 @@ const ms = require('parse-ms')
 const db = require('quick.db')
 
 exports.run = async (client, message, args) => {
+   let ekoban = db.get(`sistemban_${message.author.id}`)
+ if(ekoban) return message.channel.send(
+ new Discord.MessageEmbed()
+   .setAuthor("Sistem Banı!", message.author.avatarURL())
+   .setDescription(`
+Ekonomi sisteminden \`${ekoban}\` sebebiyle banlanmışsınız!
+Eğer itirazının varsa [Destek Sunucusu](https://discord.gg/Eq67w5gkD7)'na katılarak söyleyebilirsin.
+   `)
+   .setFooter("Asperius", client.user.avatarURL())
+   .setTimestamp()
+ )
     let member = message.author;
   let kllanç = message.mentions.users.first() || message.author;
   
@@ -35,7 +46,7 @@ if(args[0] === "zombi-et") {
     
 if(!zombiet) return message.reply(`Hiç zombi etiniz bulunmamakta!`)
 if(sayı > zombiet) return message.channel.send(`Çantanızdaki **zombi etinden** daha fazla zombi et satamazsınız!`)
-  db.delete(`zombiet_${kllanç.id}`, "Kapalıdır")
+  db.add(`zombiet_${kllanç.id}`, -sayı)
   db.add(`bakiye_${kllanç.id}`, +fiyatcık)
   
   return message.reply(`Ürünü başarıyla sattınız. Kazandığınız para: ${fiyatcık}`)

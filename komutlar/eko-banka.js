@@ -2,6 +2,17 @@
 const Discord = require('discord.js');
 const db = require('quick.db')
 exports.run = (client, message, args) => {
+   let ekoban = db.get(`sistemban_${message.author.id}`)
+ if(ekoban) return message.channel.send(
+ new Discord.MessageEmbed()
+   .setAuthor("Sistem Banı!", message.author.avatarURL())
+   .setDescription(`
+Ekonomi sisteminden \`${ekoban}\` sebebiyle banlanmışsınız!
+Eğer itirazının varsa [Destek Sunucusu](https://discord.gg/Eq67w5gkD7)'na katılarak söyleyebilirsin.
+   `)
+   .setFooter("Asperius", client.user.avatarURL())
+   .setTimestamp()
+ )
   let banka = db.fetch(`banka_${message.author.id}`)
  let para = db.fetch(`bakiye_${message.author.id}`)
 let amaç = db.fetch(`şirketamac_${message.author.id}`)

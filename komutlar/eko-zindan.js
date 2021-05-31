@@ -2,7 +2,17 @@ const Discord = require('discord.js');//Fiber <3 LysteX
 const db = require('quick.db')
   const ms = require('parse-ms');
 exports.run = async(client, message, args) => {
-		  
+	 let ekoban = db.get(`sistemban_${message.author.id}`)
+ if(ekoban) return message.channel.send(
+ new Discord.MessageEmbed()
+   .setAuthor("Sistem Banı!", message.author.avatarURL())
+   .setDescription(`
+Ekonomi sisteminden \`${ekoban}\` sebebiyle banlanmışsınız!
+Eğer itirazının varsa [Destek Sunucusu](https://discord.gg/Eq67w5gkD7)'na katılarak söyleyebilirsin.
+   `)
+   .setFooter("Asperius", client.user.avatarURL())
+   .setTimestamp()
+ )	  
 var bakiye = db.fetch(`para_${message.author.id}`)
 var hesapd = db.fetch(`bakiye_${message.author.id}`)
 let cd = 30000 //30 saniye şuan kendinize göre ayarlayınız
@@ -38,7 +48,7 @@ Bir mob belirtiniz. Örnek: \n a?zindan zombi/örümcek/iskelet/creeper/enderman
       
 if(args[0] === "zombi") {
 let odun3 = Math.round(Math.random() * 5)
-        db.add(`zombiet_${message.author.id}`, odun3)
+        db.add(`zombiet_${message.author.id}`, +odun3)
 message.channel.send(`
 Zindandayken zombi kesiyodun ve ${odun3} adet zombi eti kazandın
 `)
@@ -46,9 +56,9 @@ Zindandayken zombi kesiyodun ve ${odun3} adet zombi eti kazandın
 if(args[0] === "örümcek") {
   if(!elmaskılıç) return message.reply(`Hiç elmas kılıcınız bulunmamaktadır! a?market`)
       let göz = Math.round(Math.random() * 2)
-        db.add(`örümcekgöz_${message.author.id}`, göz)
+        db.add(`örümcekgöz_${message.author.id}`, +göz)
    let ip = Math.round(Math.random() * 3)
-        db.add(`ip_${message.author.id}`, ip)
+        db.add(`ip_${message.author.id}`, +ip)
   message.channel.send(`
 Zindandayken örmücek kesiyordun ve ${göz} adet örümcek gözü kazandın
 Zindandayken örümcek kesiyordun ve ${ip} adet ip kazandın
@@ -56,9 +66,9 @@ Zindandayken örümcek kesiyordun ve ${ip} adet ip kazandın
 }
 if(args[0] === "iskelet") {
 let yay = Math.round(Math.random() * 1)
-        db.add(`yay_${message.author.id}`, yay)
+        db.add(`yay_${message.author.id}`, +yay)
 let ok = Math.round(Math.random() * 4)
-        db.add(`ok_${message.author.id}`, ok)  
+        db.add(`ok_${message.author.id}`, +ok)  
 message.channel.send(`
 Zindandayken iskelet kesiyordun ve ${yay} adet yay kazandın
 Zindandayken iskelet kesiyordun ve ${ok} adet ok kazandın
@@ -67,7 +77,7 @@ Zindandayken iskelet kesiyordun ve ${ok} adet ok kazandın
 if(args[0] === "creeper") {
       if(!demirkılıç) return message.reply(`Hiç taş baltanız bulunmamaktadır! a?market`)
                 let odun = Math.round(Math.random() * 2)
-        db.add(`barut_${message.author.id}`, odun)
+        db.add(`barut_${message.author.id}`, +odun)
   message.channel.send(`
 Zindandayken creeper kesiyodun ve ${odun} adet huş odunu kazandın
 `)
@@ -75,7 +85,7 @@ Zindandayken creeper kesiyodun ve ${odun} adet huş odunu kazandın
       if(args[0] === "enderman") {
     if(!demirkılıç) return message.reply(`Hiç demir kılıcınız bulunmamaktadır! a?market`)
 let odun3 = Math.round(Math.random() * 1)
-        db.add(`endergöz_${message.author.id}`, odun3)
+        db.add(`endergöz_${message.author.id}`, +odun3)
 message.channel.send(`
 Zindandayken enderman kesiyodun ve ${odun3} adet enderman gözü kazandın
 `)

@@ -4,7 +4,6 @@ var ayarlar = require('../ayarlar.json');
 
 
 exports.run = async (client, message, args) => {
-		  
 	
 if(message.author.id !== "477050335685509124") if(message.author.id !== "449536056019124234") return message.channel.send("hoop bilader sahip komutu bu");
   const silinecekkllnc = message.mentions.members.first();
